@@ -7,4 +7,4 @@ services:
     ports:
     - "69:69/udp"
     volumes:
-    - ${PWD}/dhv/tftp:/var/tftpboot
+    - ${PWD}/dhv/tftp:/tftpboot
