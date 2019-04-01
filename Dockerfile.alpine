@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.7
 MAINTAINER Jerry <mcchae@gmail.com>
 
 RUN apk add --no-cache tftp-hpa
