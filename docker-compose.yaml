@@ -1,10 +1,10 @@
 version: '2'
 
 services:
-  bind:
+  tftp:
 #   restart: always
     image: mcchae/tftp-server
     ports:
     - "69:69/udp"
     volumes:
-    - ${PWD}/dhv/tftp:/data
+    - ${PWD}/dhv/tftp:/var/tftpboot

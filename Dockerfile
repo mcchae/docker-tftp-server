@@ -1,10 +1,10 @@
 FROM alpine:latest
 MAINTAINER Jerry <mcchae@gmail.com>
 
-RUN apk add --no-cache tftp-hpa && mkdir -p /data
+RUN apk add --no-cache tftp-hpa
 
 EXPOSE 69/udp
-VOLUME /data
+VOLUME /var/tftpboot
 
 ENTRYPOINT ["in.tftpd"]
-CMD ["-L", "--verbose", "-u", "root", "--secure", "--create", "/data"]
+CMD ["-L", "--verbose", "--secure", "/var/tftpboot"]
