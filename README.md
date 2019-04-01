@@ -20,25 +20,26 @@ services:
 
 ## 테스트
 
-### Install tftp-hpa
-* Install tftp-hpa package. 
-* /var/tftpboot is used for TFTP server directory.
+### start tftp
 
 ```sh
-$ sudo apk add tftp-hpa
-$ sudo rc-update add in.tftpd
-$ sudo rc-service in.tftpd start
+$ docker-compose up 
 ```
 
 ### GET file with tftp
-* Put file to /var/tftpboot.
+
+* Put file to ${PWD}/dhv/tftp
 
 ```sh
-$ echo "hello" | sudo tee /var/tftpboot/hello.txt
-Get file with tftp from TFTP server.
+$ echo "hello world" | sudo tee ${PWD}/dhv/tftp/hello.txt
+```
+
+* Get file with tftp from TFTP server.
+
+```sh
 $ echo "get hello.txt" | tftp 127.0.0.1
 tftp> get hello.txt
 tftp>
 $ cat hello.txt
-hello
+hello world
 ```
