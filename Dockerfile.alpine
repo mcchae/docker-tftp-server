@@ -1,17 +1,12 @@
-FROM alpine:3.7
+FROM alpine:latest
 MAINTAINER Jerry <mcchae@gmail.com>
 
-RUN apk add --no-cache tftp-hpa
-
-RUN apk update && \
-    apk add --no-cache tftp-hpa=5.2-r2 && \
-    rm -rf /tmp/* && \
-    rm -rf /var/cache/apk/* &&\
-    mkdir -p /tftpboot
-
-VOLUME /tftpboot
+RUN apk add --no-cache tftp-hpa tcpdump && \
+    mkdir -p /data
 
 EXPOSE 69/udp
+VOLUME /data
 
-ENTRYPOINT ["/usr/sbin/in.tftpd"]
-CMD ["--foreground", "--address", "0.0.0.0:69", "--secure", "--verbose", "/tftpboot"]
+ENTRYPOINT ["in.tftpd"]
+
+CMD ["-L", "--verbose", "-u", "root", "--secure", "--create", "/data"]
