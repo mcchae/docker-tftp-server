@@ -7,6 +7,6 @@ RUN apk update && apk add tftp-hpa tcpdump && \
 EXPOSE 69/udp
 VOLUME /data
 
-ENTRYPOINT ["in.tftpd"]
+# ENTRYPOINT ["in.tftpd"]
 
-CMD ["-L", "-vvv", "-u", "root", "--secure", "--create", "/data"]
+CMD ["in.tftpd", "-L", "-vvv", "-u", "root", "--secure", "--create", "/data"]

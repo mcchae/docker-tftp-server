@@ -2,9 +2,15 @@ version: '2'
 
 services:
   tftp:
-#   restart: always
     image: mcchae/tftp-server
+    container_name: tftp_server
     ports:
     - "6969:69/udp"
     volumes:
     - ${PWD}/dhv/tftp:/data
+  tftptest:
+    image: mcchae/tftp-server
+    container_name: tftp_client
+    links:
+    - tftp
+    command: /bin/sleep 1000
