@@ -1,7 +1,7 @@
 FROM alpine:latest
 MAINTAINER Jerry <mcchae@gmail.com>
 
-RUN apk update && apk add --no-cache tftp-hpa tcpdump && \
+RUN apk update && apk add tftp-hpa tcpdump && \
     mkdir -p /data
 
 EXPOSE 69/udp
