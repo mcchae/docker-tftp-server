@@ -5,6 +5,6 @@ services:
 #   restart: always
     image: mcchae/tftp-server
     ports:
-    - "69:69/udp"
+    - "6969:69/udp"
     volumes:
     - ${PWD}/dhv/tftp:/data
