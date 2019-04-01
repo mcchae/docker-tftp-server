@@ -31,7 +31,7 @@ $ docker-compose up
 * Put file to ${PWD}/dhv/tftp
 
 ```sh
-$ echo "hello world" | sudo tee ${PWD}/dhv/tftp/hello.txt
+$ echo "hello world" | tee ${PWD}/dhv/tftp/hello.txt
 ```
 
 * Get file with tftp from TFTP server.
