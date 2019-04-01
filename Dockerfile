@@ -1,17 +1,11 @@
-FROM alpine:latest
+FROM ubuntu:14.04
 MAINTAINER Jerry <mcchae@gmail.com>
 
-RUN apk add --no-cache tftp-hpa
+# Install tftpd-hpa deamon
+RUN apt-get update
+RUN apt-get install -y tftpd-hpa
+VOLUME /var/lib/tftpboot
 
-RUN apk update && \
-    apk add --no-cache tftp-hpa=5.2-r2 && \
-    rm -rf /tmp/* && \
-    rm -rf /var/cache/apk/* &&\
-    mkdir -p /tftpboot
+EXPOSE 69
 
-VOLUME /tftpboot
-
-EXPOSE 69/udp
-
-ENTRYPOINT ["/usr/sbin/in.tftpd"]
-CMD ["--foreground", "--secure", "--verbose", "/tftpboot"]
+CMD /usr/sbin/in.tftpd --foreground --user tftp --address 0.0.0.0:69 --secure /var/lib/tftpboot
