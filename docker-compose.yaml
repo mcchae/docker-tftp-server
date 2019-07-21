@@ -14,3 +14,10 @@ services:
     links:
     - tftp
     command: /bin/sleep 1000
+  tftptest2:
+    image: ubuntu
+    container_name: tftp_client2
+    links:
+    - tftp
+    command: sleep 1000
+
